@@ -1,0 +1,121 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewData["Title"] = "Taxi Reservations Management";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>Manage Taxi Reservations</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-4">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Passenger</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pickup Location</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dropoff Location</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Reservation Date/Time</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Driver</th>
+                                    <th class="text-secondary opacity-7">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reservationList"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editReservationModal" tabindex="-1" aria-labelledby="editReservationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header py-2">
+                    <h6 class="modal-title fw-bold" id="editReservationModalLabel">Edit Reservation</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editReservationForm">
+                        <input type="hidden" id="editReservationId" />
+                        <div class="mb-2">
+                            <label class="form-label small">Passenger</label>
+                            <input type="text" id="editPassengerName" class="form-control form-control-sm" readonly />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label small">Pickup Location</label>
+                            <input type="text" id="editPickupLocation" class="form-control form-control-sm" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label small">Dropoff Location</label>
+                            <input type="text" id="editDropoffLocation" class="form-control form-control-sm" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label small">Reservation Date</label>
+                            <input type="date" id="editReservationDate" class="form-control form-control-sm" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label small">Reservation Time</label>
+                            <input type="time" id="editReservationTime" class="form-control form-control-sm" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label small">Status</label>
+                            <select id="editStatus" class="form-select form-select-sm">
+                                <option value="Pending">Pending</option>
+                                <option value="Start">Start</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Canceled">Canceled</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label small">Driver</label>
+                            <select id="editDriver" class="form-control form-control-sm">
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label small">Fare</label>
+                            <input type="number" id="editFare" class="form-control form-control-sm" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveReservationChanges()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmReservationModal" tabindex="-1" aria-labelledby="confirmReservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header py-2">
+                <h6 class="modal-title fw-bold" id="confirmReservationModalLabel">Confirm Reservation</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="confirmReservationForm">
+                    <input type="hidden" id="confirmReservationId" />
+                    <p><strong>Passenger:</strong> <span id="confirmPassengerName"></span></p>
+                    <p><strong>Pickup Location:</strong> <span id="confirmPickupLocation"></span></p>
+                    <p><strong>Dropoff Location:</strong> <span id="confirmDropoffLocation"></span></p>
+                    <p><strong>Reservation Date:</strong> <span id="confirmReservationDate"></span></p>
+                    <p><strong>Reservation Time:</strong> <span id="confirmReservationTime"></span></p>
+                </form>
+            </div>
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="confirmReservation()">Confirm Reservation</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="~/js/taxiDashboard/taxiReservation.js"></script>

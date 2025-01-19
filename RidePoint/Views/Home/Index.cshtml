@@ -1,8 +1,465 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<pentasharp.Models.Entities.UserReview>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Transport Services";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="carousel-header">
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselId"
+                data-bs-slide-to="0"
+                class="active"></li>
+            <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img class="img-fluid" src="img/driver.jpg" alt="Image" />
+                <div class="carousel-caption">
+                    <div class="text-center p-4" style="max-width: 900px">
+                        <h1 class="display-1 text-capitalize text-white mb-3 mb-md-4 wow fadeInUp"
+                            data-wow-delay="0.3s">
+                            Taxi
+                        </h1>
+                        <p class="text-white mb-4 mb-md-5 fs-5 wow fadeInUp"
+                           data-wow-delay="0.5s">
+                            Pentasharp Taxis: Experience Five-Star Comfort - Always Sharp
+                            on Time<br />Your Reliable Ride!
+                        </p>
+                        <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp"
+                           data-wow-delay="0.7s"
+                           href="#">More Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/koreangirl.jpg" class="img-fluid" alt="Image" />
+                <div class="carousel-caption">
+                    <div class="text-center p-4" style="max-width: 900px">
+                        <h1 class="display-1 text-capitalize text-white mb-3 mb-md-4 wow fadeInUp"
+                            data-wow-delay="0.3s">
+                            Bus
+                        </h1>
+                        <p class="text-white mb-4 mb-md-5 fs-5 wow fadeInUp"
+                           data-wow-delay="0.5s">
+                            Pentasharp Buses: On Schedule, On Route, On Point — Every
+                            Ride, Every Time<br />Your Reliable Ride!
+                        </p>
+                        <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp"
+                           data-wow-delay="0.7s"
+                           href="#">More Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselId"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-secondary wow fadeInLeft"
+                  data-wow-delay="0.2s"
+                  aria-hidden="false"></span>
+            <span class="visually-hidden-focusable">Previous</span>
+        </button>
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselId"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-secondary wow fadeInRight"
+                  data-wow-delay="0.2s"
+                  aria-hidden="false"></span>
+            <span class="visually-hidden-focusable">Next</span>
+        </button>
+    </div>
 </div>
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-xl-5 wow fadeInLeft" data-wow-delay="0.1s">
+                <div class="bg-light rounded">
+                    <img src="img/transport.png"
+                         class="img-fluid w-100"
+                         style="margin-bottom: -7px"
+                         alt="Image" />
+                </div>
+            </div>
+            <div class="col-xl-7 wow fadeInRight" data-wow-delay="0.3s">
+                <h5 class="sub-title pe-3">About the company</h5>
+                <h1 class="display-5 mb-4">
+                    We’re a Trusted Transportation Services Provider.
+                </h1>
+                <p class="mb-4">
+                    Our company is dedicated to offering reliable and user-friendly
+                    solutions for all your transportation needs, including bus
+                    schedules, reservations, and taxi services. Whether you're
+                    planning a journey in advance or need immediate transportation, we
+                    provide an efficient and seamless experience.
+                </p>
+                <div class="row gy-4 align-items-center">
+                    <div class="col-12 col-sm-6 d-flex align-items-center">
+                        <i class="fas fa-map-marked-alt fa-3x text-secondary"></i>
+                        <h5 class="ms-4">Best Transport Resources</h5>
+                    </div>
+                    <div class="col-12 col-sm-6 d-flex align-items-center">
+                        <i class="fas fa-passport fa-3x text-secondary"></i>
+                        <h5 class="ms-4">Return Ticket Availabile</h5>
+                    </div>
+                    <div class="col-4 col-md-3">
+                        <div class="bg-light text-center rounded p-3">
+                            <div class="mb-2">
+                                <i class="fas fa-ticket-alt fa-4x text-primary"></i>
+                            </div>
+                            <h1 class="display-5 fw-bold mb-2">34</h1>
+                            <p class="text-muted mb-0">Years of Experience</p>
+                        </div>
+                    </div>
+                    <div class="col-8 col-md-9">
+                        <div class="mb-5">
+                            <p class="text-primary h6 mb-3">
+                                <i class="fa fa-check-circle text-secondary me-2"></i> Offer
+                                100 % Genuine Assistance
+                            </p>
+                            <p class="text-primary h6 mb-3">
+                                <i class="fa fa-check-circle text-secondary me-2"></i> It’s
+                                Faster & Reliable Execution
+                            </p>
+                            <p class="text-primary h6 mb-3">
+                                <i class="fa fa-check-circle text-secondary me-2"></i>
+                                Accurate & Expert Advice
+                            </p>
+                        </div>
+                        <div class="d-flex flex-wrap">
+                            <div id="phone-tada"
+                                 class="d-flex align-items-center justify-content-center me-4">
+                                <a href=""
+                                   class="position-relative wow tada"
+                                   data-wow-delay=".9s">
+                                    <i class="fa fa-phone-alt text-primary fa-3x"></i>
+                                    <div class="position-absolute" style="top: 0; left: 25px">
+                                        <span>
+                                            <i class="fa fa-comment-dots text-secondary"></i>
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                                <span class="text-primary">Have any questions?</span>
+                                <span class="text-secondary fw-bold fs-5"
+                                      style="letter-spacing: 2px">Free: +0123 456 7890</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid counter-facts py-5">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp"
+                 data-wow-delay="0.1s">
+                <div class="counter">
+                    <div class="counter-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <div class="counter-content">
+                        <h3>Taxi Categories</h3>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <span class="counter-value" data-toggle="counter-up">31</span>
+                            <h4 class="text-secondary mb-0"
+                                style="font-weight: 600; font-size: 25px">
+                                +
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp"
+                 data-wow-delay="0.3s">
+                <div class="counter">
+                    <div class="counter-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="counter-content">
+                        <h3>Team Members</h3>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <span class="counter-value" data-toggle="counter-up">377</span>
+                            <h4 class="text-secondary mb-0"
+                                style="font-weight: 600; font-size: 25px">
+                                +
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp"
+                 data-wow-delay="0.5s">
+                <div class="counter">
+                    <div class="counter-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="counter-content">
+                        <h3>User Accounts</h3>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <span class="counter-value" data-toggle="counter-up">4.9</span>
+                            <h4 class="text-secondary mb-0"
+                                style="font-weight: 600; font-size: 25px">
+                                K
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp"
+                 data-wow-delay="0.7s">
+                <div class="counter">
+                    <div class="counter-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="counter-content">
+                        <h3>Success Rates</h3>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <span class="counter-value" data-toggle="counter-up">98</span>
+                            <h4 class="text-secondary mb-0"
+                                style="font-weight: 600; font-size: 25px">
+                                %
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid features overflow-hidden py-5">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInUp"
+             data-wow-delay="0.1s">
+            <div class="sub-style">
+                <h5 class="sub-title text-primary px-3">Why Choose Us</h5>
+            </div>
+            <h1 class="display-5 mb-4">
+                Offer Tailor Made Services That Our Client Requires
+            </h1>
+            <p class="mb-0">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
+                deleniti amet at atque sequi quibusdam cumque itaque repudiandae
+                temporibus, eius nam mollitia voluptas maxime veniam necessitatibus
+                saepe in ab? Repellat!
+            </p>
+        </div>
+        <div class="row g-4 justify-content-center text-center">
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp"
+                 data-wow-delay="0.1s">
+                <div class="feature-item text-center p-4">
+                    <div class="feature-icon p-3 mb-4">
+                        <i class="fas fa-calendar-alt fa-4x text-primary"></i>
+                    </div>
+                    <div class="feature-content d-flex flex-column">
+                        <h5 class="mb-3">Bus Schedules</h5>
+                        <p class="mb-3">
+                            Explore detailed bus schedules to plan your travel with ease.
+                        </p>
+                        <a asp-controller="Bus" asp-action="BusSchedules"
+                           class="btn btn-secondary rounded-pill">
+                            View the schedule<i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp"
+                 data-wow-delay="0.5s">
+                <div class="feature-item text-center p-4">
+                    <div class="feature-icon p-3 mb-4">
+                        <i class="fas fa-taxi fa-4x text-primary"></i>
+                    </div>
+                    <div class="feature-content d-flex flex-column">
+                        <h5 class="mb-3">Taxi Bookings</h5>
+                        <p class="mb-3">
+                            Book a taxi quickly and conveniently for any destination.
+                        </p>
+                        <a asp-controller="Taxi" asp-action="TaxiBooking"
+                           class="btn btn-secondary rounded-pill"
+                         >
+                            Book a taxi<i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp"
+                 data-wow-delay="0.7s">
+                <div class="feature-item text-center p-4">
+                    <div class="feature-icon p-3 mb-4">
+                        <i class="fas fa-clipboard-check fa-4x text-primary"></i>
+                    </div>
+                    <div class="feature-content d-flex flex-column">
+                        <h5 class="mb-3">Taxi Reservations</h5>
+                        <p class="mb-3">
+                            Make advance reservations for taxis at your convenience.
+                        </p>
+                        <a asp-controller="Taxi" asp-action="TaxiReservation"
+                           class="btn btn-secondary rounded-pill"
+                        >
+                            Reserve a taxi<i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <a class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp"
+                   data-wow-delay="0.1s"
+                   asp-controller="Home" asp-action="Services">More Features</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Features End -->
+<!-- Testimonial Start -->
+
+        <div class="container-fluid py-5">
+            <div class="container">
+                <h2 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">All Reviews</h2>
+
+                <div class="container-fluid py-5" id="reviews-section">
+                    <div class="container py-5">
+                        <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="sub-style">
+                                <h5 class="sub-title text-primary px-3">Customer Reviews</h5>
+                            </div>
+                            <h1 class="display-5 mb-4">What Our Customers Are Saying</h1>
+                        </div>
+
+                <!-- Review Slider -->
+                <div class="container py-5">
+                    <!-- Check if there are reviews in the model -->
+                    @if (Model != null && Model.Any())
+                    {
+                        <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+
+                            <!-- Indicators (optional) -->
+                            <div class="carousel-indicators">
+                                @for (int i = 0; i < (int)Math.Ceiling((double)Model.Count() / 3); i++)
+                                {
+                                    <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="@i" class="@(i == 0 ? "active" : "")" aria-current="@(i == 0 ? "true" : "false")" aria-label="Slide @(i + 1)"></button>
+                                }
+                            </div>
+
+                            <!-- Carousel Items -->
+                            <div class="carousel-inner">
+                                @for (int i = 0; i < Model.Count(); i += 3)
+                                {
+                                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                                        <div class="row">
+                                            @for (int j = i; j < i + 3 && j < Model.Count(); j++)
+                                            {
+                                                var review = Model[j];
+                                                <div class="col-md-4">
+                                                    <div class="review-item bg-light p-4 rounded h-100">
+                                                        <h5 class="mb-2">@review.UserName</h5>
+
+                                                        <!-- Limit review text height -->
+                                                        <p class="text-muted review-content" id="review-content-@j">
+                                                            @review.Content
+                                                        </p>
+
+                                                        <!-- View Full Review button -->
+                                                        <button class="btn btn-link view-full-btn" data-target="#review-content-@j">View Full Review</button>
+
+                                                        <!-- Star rating -->
+                                                        <div class="star-rating">
+                                                            @for (int k = 0; k < review.Rating; k++)
+                                                            {
+                                                                <i class="fas fa-star text-warning"></i>
+                                                            }
+                                                            @for (int k = review.Rating; k < 5; k++)
+                                                            {
+                                                                <i class="far fa-star text-warning"></i>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            <!-- Carousel Controls -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <p>No reviews available.</p>  <!-- If no reviews, display this message -->
+                    }
+                </div>
+
+                <div class="text-center mt-4">
+                    <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" asp-action="SubmitReview" asp-controller="Reviews">
+                        Add New Review
+                    </a>
+                      
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<style>
+    .review-content {
+        height: 60px; /* Limit visible content height */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Limit to 3 lines */
+        -webkit-box-orient: vertical;
+    }
+
+        .review-content.expanded {
+            height: auto; /* Remove height restriction to show full content */
+            -webkit-line-clamp: unset;
+        }
+
+    .view-full-btn {
+        font-size: 14px;
+        color: #007bff;
+        text-decoration: none;
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+        .view-full-btn:hover {
+            text-decoration: underline;
+        }
+
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const viewButtons = document.querySelectorAll('.view-full-btn');
+
+        viewButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const reviewContent = document.querySelector(this.getAttribute('data-target'));
+
+                if (reviewContent.classList.contains('expanded')) {
+                    reviewContent.classList.remove('expanded');
+                    this.textContent = 'View Full Review';
+                } else {
+                    reviewContent.classList.add('expanded');
+                    this.textContent = 'View Less';
+                }
+            });
+        });
+    });
+</script>
