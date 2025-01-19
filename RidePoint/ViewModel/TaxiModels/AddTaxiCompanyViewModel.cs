@@ -1,7 +1,7 @@
-﻿using pentasharp.Models.Entities;
+﻿using RidePoint.Models.Entities;
 using System.Collections.Generic;
 
-namespace pentasharp.ViewModel.TaxiModels
+namespace RidePoint.ViewModel.TaxiModels
 {
     /// <summary>
     /// ViewModel for adding a new taxi company and associated taxis.
@@ -26,7 +26,7 @@ namespace pentasharp.ViewModel.TaxiModels
         /// <summary>
         /// Gets or sets the list of taxis associated with the company.
         /// </summary>
-        public List<pentasharp.Models.Entities.Taxi> Taxis { get; set; } 
+        public List<RidePoint.Models.Entities.Taxi> Taxis { get; set; } 
 
         /// <summary>
         /// Gets or sets the ViewModel for adding a new taxi.

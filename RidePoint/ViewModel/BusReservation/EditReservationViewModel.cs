@@ -1,6 +1,6 @@
-﻿using pentasharp.Models.Enums;
+﻿using RidePoint.Models.Enums;
 
-namespace pentasharp.ViewModel.BusReservation
+namespace RidePoint.ViewModel.BusReservation
 {
     /// <summary>
     /// Represents the data required to edit an existing bus reservation.

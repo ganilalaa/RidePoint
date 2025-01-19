@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace pentasharp.ViewModel.TaxiModels
+namespace RidePoint.ViewModel.TaxiModels
 {
     /// <summary>
     /// ViewModel for displaying taxi company details.

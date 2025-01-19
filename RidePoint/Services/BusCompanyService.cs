@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using pentasharp.Data;
-using pentasharp.Interfaces;
-using pentasharp.Models.Entities;
-using pentasharp.Models.Enums;
-using pentasharp.ViewModel.Bus;
+using RidePoint.Data;
+using RidePoint.Interfaces;
+using RidePoint.Models.Entities;
+using RidePoint.Models.Enums;
+using RidePoint.ViewModel.Bus;
 using Microsoft.EntityFrameworkCore;
-using pentasharp.Models.DTOs;
-using pentasharp.Models.Utilities;
+using RidePoint.Models.DTOs;
+using RidePoint.Models.Utilities;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class BusCompanyService : IBusCompanyService
     {

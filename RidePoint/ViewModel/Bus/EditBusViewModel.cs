@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using pentasharp.Models.Entities;
-using pentasharp.Models.Enums;
+using RidePoint.Models.Entities;
+using RidePoint.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace pentasharp.ViewModel.Bus
+namespace RidePoint.ViewModel.Bus
 {
     /// <summary>
     /// ViewModel for editing bus details.

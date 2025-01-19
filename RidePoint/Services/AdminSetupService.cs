@@ -2,11 +2,11 @@
 using System.Text;
 using AutoMapper;
 using Microsoft.Extensions.Options;
-using pentasharp.Data;
-using pentasharp.Models.DTOs;
-using pentasharp.Models.Entities;
+using RidePoint.Data;
+using RidePoint.Models.DTOs;
+using RidePoint.Models.Entities;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class AdminSetupService
     {

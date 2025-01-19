@@ -1,9 +1,9 @@
-﻿using pentasharp.Data;
-using pentasharp.Interfaces;
-using pentasharp.Models.Enums;
-using pentasharp.ViewModel.Dashboard;
+﻿using RidePoint.Data;
+using RidePoint.Interfaces;
+using RidePoint.Models.Enums;
+using RidePoint.ViewModel.Dashboard;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class DashboardService: IDashboardService
     {

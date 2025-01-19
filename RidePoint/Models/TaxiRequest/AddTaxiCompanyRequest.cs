@@ -1,7 +1,7 @@
-﻿using pentasharp.Models.Entities;
-using pentasharp.ViewModel.TaxiModels;
+﻿using RidePoint.Models.Entities;
+using RidePoint.ViewModel.TaxiModels;
 
-namespace pentasharp.Models.TaxiRequest
+namespace RidePoint.Models.TaxiRequest
 {
     public class AddTaxiCompanyRequest
     {
@@ -23,7 +23,7 @@ namespace pentasharp.Models.TaxiRequest
         /// <summary>
         /// A list of taxis associated with the company.
         /// </summary>
-        public List<pentasharp.Models.Entities.Taxi> Taxis { get; set; }
+        public List<RidePoint.Models.Entities.Taxi> Taxis { get; set; }
 
         /// <summary>
         /// The ViewModel for adding a new taxi.

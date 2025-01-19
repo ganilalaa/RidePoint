@@ -1,8 +1,8 @@
-﻿using pentasharp.Data;
-using pentasharp.Interfaces;
-using pentasharp.Models.Entities;
-using pentasharp.ViewModel.Authenticate;
-using pentasharp.Models.Enums;
+﻿using RidePoint.Data;
+using RidePoint.Interfaces;
+using RidePoint.Models.Entities;
+using RidePoint.ViewModel.Authenticate;
+using RidePoint.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using System.Collections.Generic;
@@ -13,10 +13,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class AuthenticateService : IAuthenticateService
     {
@@ -79,48 +78,6 @@ namespace pentasharp.Services
             SetUserSession(user);
 
             return user;
-        }
-
-        public IActionResult InitiateGoogleLogin(string redirectUrl)
-        {
-            return new ChallengeResult(
-                GoogleDefaults.AuthenticationScheme,
-                new AuthenticationProperties { RedirectUri = redirectUrl }
-            );
-        }
-
-        public async Task<User> HandleGoogleResponseAsync(string returnUrl)
-        {
-            var context = _httpContextAccessor.HttpContext;
-            var result = await context.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            if (!result.Succeeded || result.Principal == null)
-            {
-                return null;
-            }
-
-            var email = result.Principal.FindFirst(ClaimTypes.Email)?.Value;
-            if (string.IsNullOrEmpty(email))
-            {
-                return null;
-            }
-
-            var existingUser = await GetUserByEmailAsync(email);
-            if (existingUser == null)
-            {
-                var name = result.Principal.FindFirst(ClaimTypes.Name)?.Value;
-                var newUser = new RegisterViewModel
-                {
-                    FirstName = name?.Split(' ').FirstOrDefault() ?? "",
-                    LastName = name?.Split(' ').Skip(1).FirstOrDefault() ?? "",
-                    Email = email,
-                    Password = ""
-                };
-                existingUser = await RegisterAsync(newUser);
-            }
-
-            SetUserSession(existingUser);
-            return existingUser;
         }
 
         public async Task<List<User>> GetAllUsersAsync()

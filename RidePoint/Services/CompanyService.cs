@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using pentasharp.Data;
-using pentasharp.Interfaces;
-using pentasharp.Models.Enums;
-using pentasharp.Models.Utilities;
+using RidePoint.Data;
+using RidePoint.Interfaces;
+using RidePoint.Models.Enums;
+using RidePoint.Models.Utilities;
 using System.Threading.Tasks;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class CompanyService : ICompanyService
     {

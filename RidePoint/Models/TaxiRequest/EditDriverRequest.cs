@@ -1,4 +1,4 @@
-﻿namespace pentasharp.Models.TaxiRequest
+﻿namespace RidePoint.Models.TaxiRequest
 {
     /// <summary>
     /// Represents the data required to edit a driver's details.

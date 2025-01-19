@@ -1,6 +1,6 @@
 using System;
 
-namespace pentasharp.Models.Enums
+namespace RidePoint.Models.Enums
 {
     public enum BookingStatus
     {

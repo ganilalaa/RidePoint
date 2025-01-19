@@ -1,10 +1,10 @@
-﻿using pentasharp.Data;
-using pentasharp.Models.Entities;
+﻿using RidePoint.Data;
+using RidePoint.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using pentasharp.Interfaces;
+using RidePoint.Interfaces;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class ReviewService : IReviewService
     {

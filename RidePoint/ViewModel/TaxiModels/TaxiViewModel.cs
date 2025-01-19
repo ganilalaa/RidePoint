@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
-using pentasharp.Models.Enums; 
+using RidePoint.Models.Enums; 
 
-namespace pentasharp.ViewModel.Taxi
+namespace RidePoint.ViewModel.Taxi
 {
     public class TaxiViewModel
     {

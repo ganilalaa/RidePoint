@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using WebApplication1.Models;
-using WebApplication1.Filters;
+using RidePoint.Models;
+using RidePoint.Filters;
 using RidePoint.Interfaces;
 using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;

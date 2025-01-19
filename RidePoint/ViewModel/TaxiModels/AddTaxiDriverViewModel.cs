@@ -1,4 +1,4 @@
-﻿namespace pentasharp.ViewModel.TaxiModels
+﻿namespace RidePoint.ViewModel.TaxiModels
 {
     public class AddTaxiDriverViewModel
     {

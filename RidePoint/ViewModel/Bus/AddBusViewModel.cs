@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using pentasharp.Models.Entities;
+using RidePoint.Models.Entities;
 
-namespace pentasharp.ViewModel.Bus
+namespace RidePoint.ViewModel.Bus
 {  /// <summary>
    /// ViewModel for adding a new bus.
    /// </summary>

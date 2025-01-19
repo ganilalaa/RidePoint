@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace pentasharp.ViewModel.Bus
+namespace RidePoint.ViewModel.Bus
 {
     /// <summary>
     /// Represents a bus and its associated company information.
