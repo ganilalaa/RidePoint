@@ -1,0 +1,102 @@
+@{
+    ViewData["Title"] = "Login";
+}
+@model pentasharp.ViewModel.Authenticate.LoginViewModel
+
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+    <div class="card shadow-lg p-4 rounded-4" style="max-width: 500px; width: 100%; background-color: #ffffff;">
+        <div class="text-center mb-4">
+            <img src="~/img/brand-logo.png" alt="PentaSharp" style="max-width: 150px; margin-bottom: 20px;">
+            <h3 class="fw-bold text-primary">Welcome Back</h3>
+            <p class="text-muted">Log in to your account</p>
+        </div>
+        <form asp-action="Login" method="post">
+            <div class="form-floating mb-3">
+                <input asp-for="Email" class="form-control" id="email" placeholder="Email Address" required>
+                <label for="email">Email Address</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Password" class="form-control" id="password" placeholder="Password" required type="password">
+                <label for="password">Password</label>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <input class="form-check-input" type="checkbox" id="remember_me">
+                    <label class="form-check-label" for="remember_me">Remember Me</label>
+                </div>
+                <a href="#!" class="text-primary">Forgot Password?</a>
+            </div>
+            <div class="d-grid mb-3">
+                <button class="btn btn-primary btn-lg" type="submit">Log In</button>
+            </div>
+            @if (!ViewData.ModelState.IsValid)
+            {
+            <div class="text-danger mb-3 text-center">
+                @ViewData.ModelState[string.Empty]?.Errors.FirstOrDefault()?.ErrorMessage
+            </div>
+            }
+        </form>
+        <div class="d-grid mb-3">
+            <button type="button"
+                    class="btn btn-outline-danger btn-lg"
+                    onclick="location.href='@Url.Action("GoogleLogin", "Authenticate")'">
+                <i class="fab fa-google"></i> Continue with Google
+            </button>
+        </div>
+        <div class="text-center mt-3">
+            <p class="text-muted mb-0">Don't have an account? <a href="./Register" class="text-primary">Sign Up</a></p>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .card {
+        border: none;
+    }
+
+    h3 {
+        color: #4a4a4a;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .form-floating label {
+        padding-left: 15px;
+        color: #6c757d;
+    }
+
+    .btn-primary {
+        background-color: #ff0077;
+        border: none;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 25px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .btn-primary:hover {
+            background-color: #cc0066;
+        }
+
+    a {
+        text-decoration: none;
+    }
+
+        a.text-primary:hover {
+            text-decoration: underline;
+        }
+
+    img {
+        border-radius: 50%;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

@@ -1,24 +1,35 @@
 using Microsoft.AspNetCore.Mvc;
-using RidePoint.Models;
+using Microsoft.EntityFrameworkCore;
+using RidePoint.Data;
 using System.Diagnostics;
+using RidePoint.Models;
 
 namespace RidePoint.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AppDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,AppDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
+        {
+            var reviews = await _context.UserReviews.AsNoTracking().ToListAsync();
+
+            return View(reviews);
+        }
+
+        public IActionResult Services()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult UserActivity()
         {
             return View();
         }
