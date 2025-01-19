@@ -1,4 +1,4 @@
-﻿namespace pentasharp.ViewModel.BusSchedul
+﻿namespace RidePoint.ViewModel.BusSchedul
 {
     /// <summary>
     /// Represents the data returned when searching for bus schedules.

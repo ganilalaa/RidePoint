@@ -1,4 +1,4 @@
-﻿namespace pentasharp.Models.Utilities
+﻿namespace RidePoint.Models.Utilities
 {
     public static class ResponseMessages
     {

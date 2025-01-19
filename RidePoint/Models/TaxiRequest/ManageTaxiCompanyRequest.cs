@@ -1,6 +1,6 @@
-﻿using pentasharp.ViewModel.TaxiModels;
+﻿using RidePoint.ViewModel.TaxiModels;
 
-namespace pentasharp.Models.TaxiRequest
+namespace RidePoint.Models.TaxiRequest
 {
     /// <summary>
     /// Represents the data required to manage taxi companies.

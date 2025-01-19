@@ -1,4 +1,4 @@
-namespace WebApplication1.Models
+namespace RidePoint.Models
 {
     public class ErrorViewModel
     {

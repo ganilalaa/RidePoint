@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using pentasharp.Models.Enums;
-using WebApplication1.Filters;
-using pentasharp.Services;
-using pentasharp.Models.TaxiRequest;
-using pentasharp.Interfaces;
-using pentasharp.ViewModel.TaxiModels;
-using pentasharp.Models.Utilities;
+using RidePoint.Models.Enums;
+using RidePoint.Filters;
+using RidePoint.Services;
+using RidePoint.Models.TaxiRequest;
+using RidePoint.Interfaces;
+using RidePoint.ViewModel.TaxiModels;
+using RidePoint.Models.Utilities;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication1.Controllers
+namespace RidePoint.Controllers
 {
     [Route("Business/TaxiDriver")]
     [TypeFilter(typeof(BusinessOnlyFilter), Arguments = new object[] { "TaxiCompany" })]

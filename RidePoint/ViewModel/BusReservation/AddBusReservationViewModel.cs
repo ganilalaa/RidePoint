@@ -1,9 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using pentasharp.Models.Entities;
-using pentasharp.Models.Enums;
+using RidePoint.Models.Entities;
+using RidePoint.Models.Enums;
 
-namespace pentasharp.ViewModel.BusReservation
+namespace RidePoint.ViewModel.BusReservation
 {
     /// <summary>
     /// Represents the data required to create a new bus reservation.

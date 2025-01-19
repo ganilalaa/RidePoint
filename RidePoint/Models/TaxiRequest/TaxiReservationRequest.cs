@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace pentasharp.Models.TaxiRequest
+namespace RidePoint.Models.TaxiRequest
 {
     /// <summary>
     /// Represents a DTO for a taxi reservation, including details about the reservation, user, and taxi.

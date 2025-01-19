@@ -2,17 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using pentasharp.Data;
-using pentasharp.Interfaces;
-using pentasharp.Models.Entities;
-using pentasharp.Models.Enums;
-using pentasharp.Models.TaxiRequest;
+using RidePoint.Data;
+using RidePoint.Interfaces;
+using RidePoint.Models.Entities;
+using RidePoint.Models.Enums;
+using RidePoint.Models.TaxiRequest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class TaxiReservationService : ITaxiReservationService
     {

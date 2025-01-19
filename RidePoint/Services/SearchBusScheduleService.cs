@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using pentasharp.Data;
-using pentasharp.Interfaces;
-using pentasharp.Models.Entities;
-using pentasharp.Models.Enums;
-using pentasharp.ViewModel.BusReservation;
-using pentasharp.ViewModel.BusSchedul;
+using RidePoint.Data;
+using RidePoint.Interfaces;
+using RidePoint.Models.Entities;
+using RidePoint.Models.Enums;
+using RidePoint.ViewModel.BusReservation;
+using RidePoint.ViewModel.BusSchedul;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class SearchBusScheduleService : ISearchBusScheduleService
     {

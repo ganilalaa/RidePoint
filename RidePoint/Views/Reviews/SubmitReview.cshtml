@@ -1,4 +1,4 @@
-﻿@model pentasharp.Models.Entities.UserReview
+﻿@model RidePoint.Models.Entities.UserReview
 
 @{
     var firstName = Context.Session.GetString("FirstName") ?? "Anonymous";
@@ -9,25 +9,22 @@
         <h3 class="text-center mb-4" style="color: #e83e8c;">Leave a Review</h3>
 
         <form asp-action="SubmitReview" method="post">
-            <!-- Review Content -->
             <div class="form-group mb-3">
                 <label for="Content" class="form-label fw-bold">Your Review</label>
                 <textarea class="form-control" id="Content" name="Content" rows="4" placeholder="Share your thoughts..." required></textarea>
             </div>
 
-            <!-- Star Rating -->
             <div class="form-group mb-3">
                 <label class="form-label fw-bold">Rating</label>
                 <div class="star-rating d-flex justify-content-center">
                     @for (int i = 1; i <= 5; i++)
                     {
-                        <i class="fas fa-star star-icon" data-value="@i"></i>
+                    <i class="fas fa-star star-icon" data-value="@i"></i>
                     }
                 </div>
                 <input type="hidden" id="Rating" name="Rating" value="0" />
             </div>
 
-            <!-- Username Selection -->
             <div class="form-group mb-3">
                 <label for="UserName" class="form-label fw-bold">Choose your Username</label>
                 <select id="UserName" name="UserName" class="form-select">
@@ -36,56 +33,55 @@
                 </select>
             </div>
 
-            <!-- Submit Button -->
             <button type="submit" class="btn btn-primary w-100 py-2">Submit Review</button>
         </form>
     </div>
 </div>
 <style>
-body {
-    background-color: #f8f9fa;
-}
+    body {
+        background-color: #f8f9fa;
+    }
 
-.review-form {
-    max-width: 500px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
+    .review-form {
+        max-width: 500px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
 
-.review-form h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    color: #333;
-}
+        .review-form h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            color: #333;
+        }
 
-.review-form .form-label {
-    font-weight: 600;
-    color: #555;
-}
+        .review-form .form-label {
+            font-weight: 600;
+            color: #555;
+        }
 
-.review-form .form-control {
-    border-radius: 8px;
-}
+        .review-form .form-control {
+            border-radius: 8px;
+        }
 
-.review-form textarea.form-control {
-    resize: none;
-    border: 1px solid #ddd;
-}
+        .review-form textarea.form-control {
+            resize: none;
+            border: 1px solid #ddd;
+        }
 
-.review-form select.form-select {
-    border-radius: 8px;
-    border: 1px solid #ddd;
-}
+        .review-form select.form-select {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
 
-.review-form button[type="submit"] {
-    background-color: #6c63ff;
-    border: none;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    font-size: 16px;
+        .review-form button[type="submit"] {
+            background-color: #6c63ff;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 16px;
         }
 
     .review-heading {
@@ -93,11 +89,11 @@ body {
         font-weight: bold;
     }
 
-.review-form button[type="submit"]:hover {
-    background-color: #5549f0;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(108, 99, 255, 0.2);
-}
+    .review-form button[type="submit"]:hover {
+        background-color: #5549f0;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(108, 99, 255, 0.2);
+    }
 
     /* Star Rating Hover Effect */
     .star-icon {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using pentasharp.Models.Entities;
+using RidePoint.Models.Entities;
 
-namespace pentasharp.ViewModel.BusSchedul
+namespace RidePoint.ViewModel.BusSchedul
 {
     /// <summary>
     /// Represents the data required to add a new bus route.

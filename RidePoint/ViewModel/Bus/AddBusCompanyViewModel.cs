@@ -1,7 +1,7 @@
-﻿using pentasharp.Models.Entities;
+﻿using RidePoint.Models.Entities;
 using System.Collections.Generic;
 
-namespace pentasharp.ViewModel.Bus
+namespace RidePoint.ViewModel.Bus
 {
     /// <summary>
     /// ViewModel for adding a new bus company and associated buses.

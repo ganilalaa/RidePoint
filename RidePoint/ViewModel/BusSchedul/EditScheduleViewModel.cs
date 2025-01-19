@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using pentasharp.Models.Enums;
+using RidePoint.Models.Enums;
 
-namespace pentasharp.ViewModel.BusSchedul
+namespace RidePoint.ViewModel.BusSchedul
 {
     /// <summary>
     /// Represents the data required to edit an existing bus schedule.

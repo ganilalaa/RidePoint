@@ -1,4 +1,4 @@
-﻿namespace pentasharp.ViewModel.Dashboard
+﻿namespace RidePoint.ViewModel.Dashboard
 {
     /// <summary>
     /// Represents the data structure for dashboard metrics.

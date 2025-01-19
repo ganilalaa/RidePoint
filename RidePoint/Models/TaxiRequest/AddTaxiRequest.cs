@@ -1,8 +1,8 @@
-﻿using pentasharp.Models.Entities;
-using pentasharp.Models.Enums;
+﻿using RidePoint.Models.Entities;
+using RidePoint.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace pentasharp.Models.TaxiRequest
+namespace RidePoint.Models.TaxiRequest
 {
     /// <summary>
     /// Represents the data required to add a new taxi to the system.

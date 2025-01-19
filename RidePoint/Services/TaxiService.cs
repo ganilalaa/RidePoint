@@ -1,14 +1,14 @@
-﻿using pentasharp.Data;
-using pentasharp.Models.Entities;
-using pentasharp.ViewModel.TaxiModels;
+﻿using RidePoint.Data;
+using RidePoint.Models.Entities;
+using RidePoint.ViewModel.TaxiModels;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using pentasharp.ViewModel.Taxi;
-using pentasharp.Models.Enums;
-using pentasharp.Models.TaxiRequest;
-using pentasharp.Interfaces;
+using RidePoint.ViewModel.Taxi;
+using RidePoint.Models.Enums;
+using RidePoint.Models.TaxiRequest;
+using RidePoint.Interfaces;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class TaxiService : ITaxiService
     {

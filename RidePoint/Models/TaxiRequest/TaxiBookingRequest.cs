@@ -1,7 +1,7 @@
-﻿using pentasharp.Models.Enums;
+﻿using RidePoint.Models.Enums;
 using System;
 
-namespace pentasharp.Models.TaxiRequest
+namespace RidePoint.Models.TaxiRequest
 {
     /// <summary>
     /// Represents a request to create a taxi booking.

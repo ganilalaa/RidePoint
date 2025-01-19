@@ -33,16 +33,6 @@ namespace RidePoint.Interfaces
         Task<User> GetUserByIdAsync(int id);
 
         /// <summary>
-        /// Initiates the Google login process.
-        /// </summary>
-        IActionResult InitiateGoogleLogin(string redirectUrl);
-
-        /// <summary>
-        /// Handles the Google login response and processes the user information.
-        /// </summary>
-        Task<User> HandleGoogleResponseAsync(string returnUrl);
-
-        /// <summary>
         /// Retrieves a user by their email address.
         /// </summary>
         Task<User> GetUserByEmailAsync(string email);

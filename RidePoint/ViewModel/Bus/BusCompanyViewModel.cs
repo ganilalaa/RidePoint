@@ -1,4 +1,4 @@
-﻿namespace pentasharp.ViewModel.Bus
+﻿namespace RidePoint.ViewModel.Bus
 {/// <summary>
  /// ViewModel for displaying bus company details.
  /// </summary>

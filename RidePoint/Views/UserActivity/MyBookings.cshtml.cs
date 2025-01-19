@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace pentasharp.Views.UserActivity
+namespace RidePoint.Views.UserActivity
 {
     public class MyBookingsModel : PageModel
     {

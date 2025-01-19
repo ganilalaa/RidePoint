@@ -1,4 +1,4 @@
-﻿namespace pentasharp.Models.TaxiRequest
+﻿namespace RidePoint.Models.TaxiRequest
 {
     /// <summary>
     /// Represents a DTO for a taxi company, including its details.

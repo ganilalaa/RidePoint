@@ -2,14 +2,14 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using pentasharp.Data;
-using pentasharp.Interfaces;
-using pentasharp.Models.Enums;
-using pentasharp.Models.TaxiRequest;
+using RidePoint.Data;
+using RidePoint.Interfaces;
+using RidePoint.Models.Enums;
+using RidePoint.Models.TaxiRequest;
 using Microsoft.Extensions.Logging;
 
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
 
     public class DriverDashboardService : IDriverDashboardService

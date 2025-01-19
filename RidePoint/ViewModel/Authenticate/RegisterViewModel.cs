@@ -1,9 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using pentasharp.Models.Entities;
-using pentasharp.Models.Enums;
+using RidePoint.Models.Entities;
+using RidePoint.Models.Enums;
 
-namespace pentasharp.ViewModel.Authenticate
+namespace RidePoint.ViewModel.Authenticate
 {
     /// <summary>
     /// Represents the registration data required for a new user.

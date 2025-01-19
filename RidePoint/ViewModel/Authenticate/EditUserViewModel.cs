@@ -1,6 +1,6 @@
-using pentasharp.Models.Enums;
+using RidePoint.Models.Enums;
 
-namespace pentasharp.ViewModel.Authenticate
+namespace RidePoint.ViewModel.Authenticate
 {
     /// <summary>
     /// Represents the data required to edit an existing user's information.

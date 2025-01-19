@@ -1,6 +1,6 @@
-﻿using pentasharp.Interfaces;
-using pentasharp.Models.TaxiRequest;
-using pentasharp.Models.Entities;
+﻿using RidePoint.Interfaces;
+using RidePoint.Models.TaxiRequest;
+using RidePoint.Models.Entities;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -9,10 +9,10 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System;
-using pentasharp.Data;
-using pentasharp.Models.Enums;
+using RidePoint.Data;
+using RidePoint.Models.Enums;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class DriverService : IDriverService
     {

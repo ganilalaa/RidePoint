@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace pentasharp.ViewModel.Bus
+namespace RidePoint.ViewModel.Bus
 {
     /// <summary>
     /// Represents a view model used to manage and display a list of bus companies.

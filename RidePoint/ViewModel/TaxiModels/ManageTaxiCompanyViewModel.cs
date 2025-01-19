@@ -1,7 +1,7 @@
-﻿using pentasharp.ViewModel.TaxiModels;
+﻿using RidePoint.ViewModel.TaxiModels;
 using System.Collections.Generic;
 
-namespace pentasharp.ViewModel.Taxi
+namespace RidePoint.ViewModel.Taxi
 {
     public class ManageTaxiCompanyViewModel
     {

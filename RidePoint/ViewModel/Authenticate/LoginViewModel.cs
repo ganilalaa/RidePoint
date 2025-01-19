@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace pentasharp.ViewModel.Authenticate
+namespace RidePoint.ViewModel.Authenticate
 {
     /// <summary>
     /// Represents the data required for user login.

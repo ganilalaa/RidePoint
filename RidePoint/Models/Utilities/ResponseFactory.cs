@@ -1,9 +1,9 @@
-﻿using pentasharp.Models.DTOs;
-using pentasharp.Models.Enums;
+﻿using RidePoint.Models.DTOs;
+using RidePoint.Models.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace pentasharp.Models.Utilities
+namespace RidePoint.Models.Utilities
 {
     public static class ResponseFactory
     {

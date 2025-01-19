@@ -1,6 +1,6 @@
-﻿using pentasharp.Models.Enums;
+﻿using RidePoint.Models.Enums;
 
-namespace pentasharp.Models.TaxiRequest
+namespace RidePoint.Models.TaxiRequest
 {
     /// <summary>
     /// Represents a DTO for a taxi, including its details.

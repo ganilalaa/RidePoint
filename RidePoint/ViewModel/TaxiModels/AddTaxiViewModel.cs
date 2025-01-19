@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using pentasharp.Models.Entities;
-using pentasharp.Models.Enums;
+using RidePoint.Models.Entities;
+using RidePoint.Models.Enums;
 
-namespace pentasharp.ViewModel.TaxiModels
+namespace RidePoint.ViewModel.TaxiModels
 {
     /// <summary>
     /// ViewModel for adding a new taxi.

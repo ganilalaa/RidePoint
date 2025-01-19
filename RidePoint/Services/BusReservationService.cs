@@ -1,12 +1,12 @@
-﻿using pentasharp.Data;
-using pentasharp.Interfaces;
-using pentasharp.Models.Enums;
-using pentasharp.ViewModel.BusReservation;
+﻿using RidePoint.Data;
+using RidePoint.Interfaces;
+using RidePoint.Models.Enums;
+using RidePoint.ViewModel.BusReservation;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace pentasharp.Services
+namespace RidePoint.Services
 {
     public class BusReservationService : IBusReservationService
     {

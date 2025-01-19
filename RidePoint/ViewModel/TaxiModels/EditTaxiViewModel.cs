@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using pentasharp.Models.Entities;
-using pentasharp.Models.Enums;
+using RidePoint.Models.Entities;
+using RidePoint.Models.Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace pentasharp.ViewModel.TaxiModels
+namespace RidePoint.ViewModel.TaxiModels
 {
     /// <summary>
     /// ViewModel for editing taxi details.

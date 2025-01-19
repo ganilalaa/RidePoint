@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using pentasharp.Models.Enums;
+using RidePoint.Models.Enums;
 
 namespace RidePoint.Models.Entities
 {

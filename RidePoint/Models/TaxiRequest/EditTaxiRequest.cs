@@ -1,6 +1,6 @@
-﻿using pentasharp.Models.Entities;
+﻿using RidePoint.Models.Entities;
 
-namespace pentasharp.Models.TaxiRequest
+namespace RidePoint.Models.TaxiRequest
 {
     /// <summary>
     /// Represents the data required to edit a taxi's details.

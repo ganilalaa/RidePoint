@@ -1,4 +1,4 @@
-﻿namespace pentasharp.ViewModel.Authenticate
+﻿namespace RidePoint.ViewModel.Authenticate
 {
     public class EditDriverViewModel
     {
