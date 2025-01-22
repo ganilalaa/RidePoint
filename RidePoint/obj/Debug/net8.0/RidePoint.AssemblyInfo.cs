@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RidePoint")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d7efd516ae6a60f0c9e7ba1f52d25f5df932593")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a581cd71bcea435ce88f7405188ec13bf45366c0")]
 [assembly: System.Reflection.AssemblyProductAttribute("RidePoint")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RidePoint")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
