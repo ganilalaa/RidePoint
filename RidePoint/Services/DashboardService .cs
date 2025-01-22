@@ -22,6 +22,7 @@ namespace RidePoint.Services
             var taxiBookings = _context.TaxiBookings.Count();
             var taxiReservations = _context.TaxiReservations.Count();
             var busSchedules = _context.BusSchedules.Count();
+            var busReservations = _context.BusReservations.Count();
             var taxiCompanies = _context.TaxiCompanies.Count();
             var busCompanies = _context.BusCompanies.Count();
 
@@ -33,6 +34,7 @@ namespace RidePoint.Services
                 TaxiBookings = taxiBookings,
                 TaxiReservations = taxiReservations,
                 BusSchedules = busSchedules,
+                BusReservations = busReservations,
                 TaxiCompanies = taxiCompanies,
                 BusCompanies = busCompanies
             };

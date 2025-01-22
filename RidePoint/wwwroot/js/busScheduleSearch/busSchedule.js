@@ -264,16 +264,30 @@
                 const confirmationAlert = document.getElementById("AwaitingConfirmation");
 
                 if (result.success) {
-                    confirmationAlert.className = "alert alert-success mt-3 text-center";
                     confirmationAlert.textContent = "Your booking will be confirmed by management, and you will be notified.";
+                    confirmationAlert.classList.remove('d-none', 'alert-danger');
+                    confirmationAlert.classList.add('alert-success');
 
                     setTimeout(() => {
                         const modal = bootstrap.Modal.getInstance(document.getElementById("bookingModal"));
                         modal.hide();
+
+                        const modalBackdrop = document.querySelector('.modal-backdrop');
+                        if (modalBackdrop) {
+                            modalBackdrop.remove();
+                        }
+
+                        document.body.classList.remove('modal-open');
+                        document.body.style.overflow = '';
+
+                        clearForm();
+
+                        confirmationAlert.classList.add('d-none');
                     }, 3000);
                 } else {
-                    confirmationAlert.className = "alert alert-danger mt-3 text-center";
-                    confirmationAlert.textContent = result.message || "Failed to add reservation. Please try again.";
+                    confirmationAlert.textContent = 'Failed to create booking: ' + (data.message || 'Unknown error');
+                    confirmationAlert.classList.remove('d-none', 'alert-success');
+                    confirmationAlert.classList.add('alert-danger');
                 }
             })
             .catch(() => {
@@ -282,4 +296,11 @@
                 confirmationAlert.textContent = "An error occurred while adding the reservation.";
             });
     });
+
+    function clearForm() {
+        document.getElementById("numberOfSeats").value = '';
+        document.getElementById("totalAmount").value = '';
+        document.getElementById("reservationDate").value = '';
+        document.getElementById("passengerNameInput").value = '';
+    }
 });
