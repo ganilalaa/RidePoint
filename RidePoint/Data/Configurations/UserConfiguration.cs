@@ -52,6 +52,10 @@ namespace RidePoint.Data.Configurations
 
             builder.Property(u => u.CreatedAt)
                 .HasDefaultValueSql("GETUTCDATE()");
+
+            builder.Property(u => u.JwtSecret)
+               .HasMaxLength(256)
+               .IsRequired(false);
         }
 
         private void ConfigureIndexes(EntityTypeBuilder<User> builder)

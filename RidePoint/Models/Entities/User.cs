@@ -41,6 +41,11 @@ namespace RidePoint.Models.Entities
         public UserRole Role { get; set; } = UserRole.User;
 
         /// <summary>
+        /// The secret key used for signing and validating JWT tokens for the user.
+        /// </summary>
+        public string JwtSecret { get; set; }
+
+        /// <summary>
         /// Identifier of the company associated with the user, if any.
         /// </summary>
         public int? CompanyId { get; set; }
