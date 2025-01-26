@@ -1,13 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using RidePoint.Data;
 using AutoMapper;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using RidePoint.Services;
 using RidePoint.Mappings;
 using RidePoint.Models.DTOs;
+using System.Security.Claims;
+using System.Text;
 using RidePoint.Filters;
 using RidePoint.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 
 namespace RidePoint
 {
@@ -92,6 +98,47 @@ namespace RidePoint
             {
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                 .AddJwtBearer(options =>
+                 {
+                     options.Events = new JwtBearerEvents
+                     {
+                         OnTokenValidated = async context =>
+                         {
+                             var userId = int.Parse(context.Principal.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+                             var dbContext = context.HttpContext.RequestServices.GetRequiredService<AppDbContext>();
+                             var user = await dbContext.Users.FindAsync(userId);
+
+                             if (user == null || string.IsNullOrEmpty(user.JwtSecret))
+                             {
+                                 context.Fail("Unauthorized");
+                                 return;
+                             }
+
+                             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(user.JwtSecret));
+                             var tokenHandler = new JwtSecurityTokenHandler();
+                             var validationParameters = new TokenValidationParameters
+                             {
+                                 ValidateIssuerSigningKey = true,
+                                 IssuerSigningKey = signingKey,
+                                 ValidateIssuer = false,
+                                 ValidateAudience = false,
+                                 ValidateLifetime = true
+                             };
+
+                             try
+                             {
+                                 tokenHandler.ValidateToken(context.SecurityToken.ToString(), validationParameters, out _);
+                             }
+                             catch
+                             {
+                                 context.Fail("Invalid token");
+                             }
+                         }
+                     };
+                 });
+
 
             var app = builder.Build();
 

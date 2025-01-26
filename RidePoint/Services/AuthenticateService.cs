@@ -8,12 +8,14 @@ using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace RidePoint.Services
 {
@@ -50,6 +52,7 @@ namespace RidePoint.Services
             var session = _httpContextAccessor.HttpContext.Session;
             session.Clear();
             _httpContextAccessor.HttpContext.Response.Cookies.Delete("UserId");
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("JwtToken");
         }
 
         public async Task<User> RegisterAsync(RegisterViewModel model)
@@ -57,29 +60,71 @@ namespace RidePoint.Services
             var user = _mapper.Map<User>(model);
             user.PasswordHash = HashPassword(model.Password);
 
+            if (string.IsNullOrEmpty(user.JwtSecret))
+            {
+                user.JwtSecret = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
+            }
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
+            var jwtToken = GenerateJwtToken(user);
+
+            _httpContextAccessor.HttpContext.Response.Cookies.Append("JwtToken", jwtToken);
 
             SetUserSession(user);
 
             return user;
         }
 
+
         public async Task<User> LoginAsync(string email, string password)
         {
             var user = await _context.Users.AsNoTracking()
-                                .SingleOrDefaultAsync(u => u.Email == email);
+                                  .SingleOrDefaultAsync(u => u.Email == email);
             if (user == null)
                 return null;
 
             if (user.PasswordHash != HashPassword(password))
                 return null;
 
+            if (string.IsNullOrEmpty(user.JwtSecret))
+            {
+                user.JwtSecret = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
+                await _context.SaveChangesAsync();
+            }
+
             SetUserSession(user);
+
+            var jwtToken = GenerateJwtToken(user);
+
+            _httpContextAccessor.HttpContext.Response.Cookies.Append("JwtToken", jwtToken);
 
             return user;
         }
 
+
+        private string GenerateJwtToken(User user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(user.JwtSecret);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+            new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.Role, user.Role.ToString()),
+            new Claim("IsAdmin", user.IsAdmin.ToString())
+        }),
+                Expires = DateTime.UtcNow.AddMinutes(60),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
         public async Task<List<User>> GetAllUsersAsync()
         {
             return await _context.Users.ToListAsync();
