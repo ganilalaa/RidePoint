@@ -104,7 +104,9 @@ namespace RidePoint.Services
         }
         public async Task<List<User>> GetAllUsersAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+                .Where(user => !user.IsAdmin)
+                .ToListAsync();
         }
 
         public void SetUserSession(User user)
