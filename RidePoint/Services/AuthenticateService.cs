@@ -32,29 +32,6 @@ namespace RidePoint.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public void SetUserSession(User user)
-        {
-            var session = _httpContextAccessor.HttpContext.Session;
-            session.SetInt32("UserId", user.UserId);
-            session.SetString("FirstName", user.FirstName);
-            session.SetString("UserRole", user.Role.ToString());
-            session.SetString("IsAdmin", user.IsAdmin ? "true" : "false");
-            session.SetString("BusinessType", user.BusinessType.ToString());
-
-            if (user.CompanyId.HasValue)
-            {
-                session.SetInt32("CompanyId", user.CompanyId.Value);
-            }
-        }
-
-        public void ClearUserSession()
-        {
-            var session = _httpContextAccessor.HttpContext.Session;
-            session.Clear();
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete("UserId");
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete("JwtToken");
-        }
-
         public async Task<User> RegisterAsync(RegisterViewModel model)
         {
             var user = _mapper.Map<User>(model);
@@ -128,6 +105,29 @@ namespace RidePoint.Services
         public async Task<List<User>> GetAllUsersAsync()
         {
             return await _context.Users.ToListAsync();
+        }
+
+        public void SetUserSession(User user)
+        {
+            var session = _httpContextAccessor.HttpContext.Session;
+            session.SetInt32("UserId", user.UserId);
+            session.SetString("FirstName", user.FirstName);
+            session.SetString("UserRole", user.Role.ToString());
+            session.SetString("IsAdmin", user.IsAdmin ? "true" : "false");
+            session.SetString("BusinessType", user.BusinessType.ToString());
+
+            if (user.CompanyId.HasValue)
+            {
+                session.SetInt32("CompanyId", user.CompanyId.Value);
+            }
+        }
+
+        public void ClearUserSession()
+        {
+            var session = _httpContextAccessor.HttpContext.Session;
+            session.Clear();
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("UserId");
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("JwtToken");
         }
 
         public async Task<User> GetUserByEmailAsync(string email)
