@@ -54,33 +54,6 @@ namespace RidePoint.Controllers
             return BadRequest(ResponseFactory.ErrorResponse(ResponseCodes.InvalidData, ResponseMessages.InvalidData));
         }
 
-        [HttpPut("EditCompany/{id}")]
-        public async Task<IActionResult> EditCompanyAsync(int id, [FromBody] BusCompanyViewModel model)
-        {
-            var result = await _companyService.EditCompanyAsync(id, model);
-            if (result)
-            {
-                _logger.LogInformation("Successfully edited company with ID: {CompanyId}", id);
-                return Ok(ResponseFactory.SuccessResponse(ResponseMessages.Success, result));
-            }
-
-            _logger.LogWarning("Failed to edit company with ID: {CompanyId}. Company not found.", id);
-            return NotFound(ResponseFactory.ErrorResponse(ResponseCodes.NotFound, ResponseMessages.NotFound));
-        }
-
-        [HttpDelete("DeleteCompany/{id}")]
-        public async Task<IActionResult> DeleteCompany(int id)
-        {
-            var result = await _companyService.DeleteCompanyAsync(id);
-            if (result)
-            {
-                _logger.LogInformation("Successfully deleted company with ID: {CompanyId}", id);
-                return Ok(ResponseFactory.SuccessResponse("Company and its buses deleted successfully.", result));
-            }
-
-            _logger.LogWarning("Failed to delete company with ID: {CompanyId}. Company not found.", id);
-            return NotFound(ResponseFactory.ErrorResponse(ResponseCodes.NotFound, ResponseMessages.NotFound));
-        }
 
         [HttpGet("GetCompanies")]
         public async Task<IActionResult> GetCompaniesAsync()
@@ -114,5 +87,34 @@ namespace RidePoint.Controllers
             _logger.LogWarning("Invalid operation while retrieving users for company with ID: {CompanyId}. Message: {Message}", companyId, response.Message);
             return BadRequest(ResponseFactory.ErrorResponse(ResponseCodes.InvalidOperation, response.Message));
         }
+
+        [HttpPut("EditCompany/{id}")]
+        public async Task<IActionResult> EditCompanyAsync(int id, [FromBody] BusCompanyViewModel model)
+        {
+            var result = await _companyService.EditCompanyAsync(id, model);
+            if (result)
+            {
+                _logger.LogInformation("Successfully edited company with ID: {CompanyId}", id);
+                return Ok(ResponseFactory.SuccessResponse(ResponseMessages.Success, result));
+            }
+
+            _logger.LogWarning("Failed to edit company with ID: {CompanyId}. Company not found.", id);
+            return NotFound(ResponseFactory.ErrorResponse(ResponseCodes.NotFound, ResponseMessages.NotFound));
+        }
+
+        [HttpDelete("DeleteCompany/{id}")]
+        public async Task<IActionResult> DeleteCompany(int id)
+        {
+            var result = await _companyService.DeleteCompanyAsync(id);
+            if (result)
+            {
+                _logger.LogInformation("Successfully deleted company with ID: {CompanyId}", id);
+                return Ok(ResponseFactory.SuccessResponse("Company and its buses deleted successfully.", result));
+            }
+
+            _logger.LogWarning("Failed to delete company with ID: {CompanyId}. Company not found.", id);
+            return NotFound(ResponseFactory.ErrorResponse(ResponseCodes.NotFound, ResponseMessages.NotFound));
+        }
+
     }
 } 

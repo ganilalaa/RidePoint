@@ -14,8 +14,9 @@ namespace RidePoint.Filters
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             var isLoggedIn = _httpContextAccessor.HttpContext?.Session.GetInt32("UserId") != null;
+            var jwtToken = _httpContextAccessor.HttpContext?.Request.Cookies["JwtToken"];
 
-            if (!isLoggedIn)
+            if (!isLoggedIn && string.IsNullOrEmpty(jwtToken))
             {
                 context.Result = new RedirectToActionResult("Login", "Authenticate", null);
             }

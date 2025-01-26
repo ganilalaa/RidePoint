@@ -24,7 +24,7 @@ namespace WebApplication1.Controllers
         private readonly ITaxiCompanyService _taxiCompanyService;
         private readonly IDashboardService _dashboardService;
 
-        public DashboardController(ITaxiCompanyService taxiCompanyService, IBusCompanyService busCompanyService ,IDashboardService dashboardService)
+        public DashboardController(ITaxiCompanyService taxiCompanyService, IBusCompanyService busCompanyService, IDashboardService dashboardService)
         {
             _taxiCompanyService = taxiCompanyService;
             _busCompanyService = busCompanyService;
@@ -37,18 +37,6 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
-        [HttpGet("Bus")]
-        public IActionResult Bus()
-        {
-            var busCompanies = _busCompanyService.GetAllBusCompanies();
-            var viewModel = new ManageBusCompanyViewModel
-            {
-                BusCompanies = busCompanies
-            };
-
-            return View(viewModel);
-        }
-
         [HttpGet("Taxi")]
         public IActionResult Taxi()
         {
@@ -57,6 +45,18 @@ namespace WebApplication1.Controllers
             var viewModel = new ManageTaxiCompanyRequest
             {
                 TaxiCompanies = taxiCompanies
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpGet("Bus")]
+        public IActionResult Bus()
+        {
+            var busCompanies = _busCompanyService.GetAllBusCompanies();
+            var viewModel = new ManageBusCompanyViewModel
+            {
+                BusCompanies = busCompanies
             };
 
             return View(viewModel);
