@@ -6,6 +6,7 @@ using RidePoint.Models.Entities;
 using RidePoint.ViewModel.BusSchedul;
 using RidePoint.ViewModel.BusReservation;
 using RidePoint.Models.Enums;
+using Microsoft.AspNetCore.Routing;
 
 namespace RidePoint.Services
 {
@@ -195,6 +196,8 @@ namespace RidePoint.Services
             if (schedule == null)
                 throw new KeyNotFoundException($"Schedule with ID {scheduleId} was not found.");
 
+            var route = await _context.BusRoutes.FindAsync(model.RouteId);
+
             var isDuplicate = await _context.BusSchedules
                 .AnyAsync(s => s.ScheduleId != scheduleId &&
                                s.BusId == model.BusId &&
@@ -207,6 +210,7 @@ namespace RidePoint.Services
             schedule.DepartureTime = model.DepartureTime;
             schedule.Price = model.Price;
             schedule.AvailableSeats = model.AvailableSeats;
+            schedule.ArrivalTime = model.DepartureTime.Add(route.EstimatedDuration);
 
             await _context.SaveChangesAsync();
             return true;
