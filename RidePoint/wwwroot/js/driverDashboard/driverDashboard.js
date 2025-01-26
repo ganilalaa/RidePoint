@@ -131,7 +131,8 @@ function endTrip() {
                         document.getElementById("currentStatus").classList.replace("bg-primary", "bg-success");
                         document.getElementById("endTripButton").style.display = "none";
                         document.getElementById("taxiMeter").style.display = "none";
-                        document.getElementById("fareDisplay").style.display = "block";
+                        document.getElementById("assignedFare").textContent = fare.toFixed(2);
+                        document.getElementById("fareDisplay").style.display = "none";
 
                         console.log(data.message || "Trip ended successfully!");
                     });
