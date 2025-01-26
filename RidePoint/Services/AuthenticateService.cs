@@ -144,30 +144,43 @@ namespace RidePoint.Services
 
         public async Task<bool> EditUserAsync(int userId, EditUserViewModel model)
         {
-            var user = await _context.Users.FindAsync(userId);
-            if (user == null)
+            try
+            {
+
+                var user = await _context.Users.FindAsync(userId);
+                if (user == null)
+                {
+                    return false;
+                }
+
+                _mapper.Map(model, user);
+
+                if (!string.IsNullOrEmpty(model.Password))
+                {
+                    user.PasswordHash = HashPassword(model.Password);
+                }
+
+                if (model.Role.HasValue)
+                {
+                    user.Role = model.Role.Value;
+                }
+
+                if (model.BusinessType.HasValue)
+                {
+                    user.BusinessType = model.BusinessType.Value;
+                }
+
+                _context.Users.Update(user);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error updating user: {ex.Message}");
+
                 return false;
-
-            _mapper.Map(model, user);
-
-            if (!string.IsNullOrEmpty(model.Password))
-            {
-                user.PasswordHash = HashPassword(model.Password);
             }
-
-            if (model.Role.HasValue)
-            {
-                user.Role = model.Role.Value;
-            }
-
-            if (model.BusinessType.HasValue)
-            {
-                user.BusinessType = model.BusinessType.Value;
-            }
-
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
-            return true;
         }
 
         public async Task<bool> SoftDeleteUserAsync(int id)
