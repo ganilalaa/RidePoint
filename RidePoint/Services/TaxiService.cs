@@ -25,49 +25,63 @@ namespace RidePoint.Services
 
         public async Task<List<TaxiRequest>> GetTaxisAsync()
         {
-            var companyId = _authService.GetCurrentCompanyId();
-
-            if (!companyId.HasValue)
+            try
             {
-                throw new UnauthorizedAccessException("No user is logged in or no associated company found.");
+                var companyId = _authService.GetCurrentCompanyId();
+
+                if (!companyId.HasValue)
+                {
+                    throw new UnauthorizedAccessException("No user is logged in or no associated company found.");
+                }
+
+                var taxis = _context.Taxis
+                    .Include(t => t.TaxiCompany)
+                    .Include(t => t.Driver)
+                    .Where(t => t.TaxiCompanyId == companyId.Value && !t.IsDeleted)
+                    .ToList();
+
+                var viewModel = taxis.Select(t => new TaxiRequest
+                {
+                    TaxiId = t.TaxiId,
+                    LicensePlate = t.LicensePlate,
+                    TaxiCompanyId = t.TaxiCompanyId,
+                    CompanyName = t.TaxiCompany.CompanyName,
+                    DriverId = t.DriverId,
+                    DriverName = t.DriverId.HasValue
+                        ? _context.Users
+                            .Where(u => u.UserId == t.DriverId.Value)
+                            .Select(u => $"{u.FirstName} {u.LastName}")
+                            .FirstOrDefault()
+                        : "No Driver Assigned"
+
+                }).ToList();
+
+                return viewModel;
             }
-
-            var taxis = _context.Taxis
-                .Include(t => t.TaxiCompany)
-                .Include(t => t.Driver)
-                .Where(t => t.TaxiCompanyId == companyId.Value && !t.IsDeleted)
-                .ToList();
-
-            var viewModel = taxis.Select(t => new TaxiRequest
+            catch (Exception ex)
             {
-                TaxiId = t.TaxiId,
-                LicensePlate = t.LicensePlate,
-                TaxiCompanyId = t.TaxiCompanyId,
-                CompanyName = t.TaxiCompany.CompanyName,
-                DriverId = t.DriverId,
-                DriverName = t.DriverId.HasValue
-                ? _context.Users
-                    .Where(u => u.UserId == t.DriverId.Value)
-                    .Select(u => $"{u.FirstName} {u.LastName}")
-                    .FirstOrDefault()
-                : "No Driver Assigned"
-
-            }).ToList();
-
-            return (viewModel);
+                throw new Exception("An error occurred while retrieving taxis.", ex);
+            }
         }
 
         public async Task<Taxi> AddTaxiAsync(AddTaxiRequest model)
         {
-            if (model.DriverId == null)
+            try
             {
-                Console.WriteLine("No driver assigned to the taxi.");
-            }
+                if (model.DriverId == null)
+                {
+                    Console.WriteLine("No driver assigned to the taxi.");
+                }
 
-            var taxi = _mapper.Map<Taxi>(model);
-            _context.Taxis.Add(taxi);
-            await _context.SaveChangesAsync();
-            return taxi;
+                var taxi = _mapper.Map<Taxi>(model);
+                _context.Taxis.Add(taxi);
+                await _context.SaveChangesAsync();
+                return taxi;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while adding a new taxi.", ex);
+            }
         }
 
         public async Task<bool> EditTaxiAsync(int id, EditTaxiRequest model)
