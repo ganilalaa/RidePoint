@@ -257,7 +257,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     })
                     .catch((error) => {
                         console.error("Error fetching drivers:", error);
-                        alert("An error occurred while fetching drivers.");
                     });
             });
         });
