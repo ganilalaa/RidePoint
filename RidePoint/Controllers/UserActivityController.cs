@@ -14,8 +14,8 @@ using RidePoint.Filters;
 
 namespace RidePoint.Controllers
 {
-    [ServiceFilter(typeof(LoginRequiredFilter))]
     [Route("UserActivity")]
+    [ServiceFilter(typeof(LoginRequiredFilter))]
     public class UserActivityController : Controller
     {
         private readonly ITaxiReservationService _taxiReservationService;

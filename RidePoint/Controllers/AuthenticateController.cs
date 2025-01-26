@@ -65,12 +65,14 @@ namespace RidePoint.Controllers
             return View(users);
         }
 
+        [ServiceFilter(typeof(AdminOnlyFilter))]
         public IActionResult Users()
         {
             return View();
         }
 
         [HttpGet("Edit/{id}")]
+        [ServiceFilter(typeof(AdminOnlyFilter))]
         public async Task<IActionResult> Edit(int id)
         {
             var user = await _userService.GetUserByIdAsync(id);
@@ -82,6 +84,7 @@ namespace RidePoint.Controllers
         }
 
         [HttpPost("EditUser")]
+        [ServiceFilter(typeof(AdminOnlyFilter))]
         public async Task<IActionResult> Edit(EditUserViewModel model)
         {
             var success = await _userService.EditUserAsync(model.UserId, model);
