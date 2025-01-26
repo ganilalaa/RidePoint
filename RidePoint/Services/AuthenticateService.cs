@@ -32,29 +32,6 @@ namespace RidePoint.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public void SetUserSession(User user)
-        {
-            var session = _httpContextAccessor.HttpContext.Session;
-            session.SetInt32("UserId", user.UserId);
-            session.SetString("FirstName", user.FirstName);
-            session.SetString("UserRole", user.Role.ToString());
-            session.SetString("IsAdmin", user.IsAdmin ? "true" : "false");
-            session.SetString("BusinessType", user.BusinessType.ToString());
-
-            if (user.CompanyId.HasValue)
-            {
-                session.SetInt32("CompanyId", user.CompanyId.Value);
-            }
-        }
-
-        public void ClearUserSession()
-        {
-            var session = _httpContextAccessor.HttpContext.Session;
-            session.Clear();
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete("UserId");
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete("JwtToken");
-        }
-
         public async Task<User> RegisterAsync(RegisterViewModel model)
         {
             var user = _mapper.Map<User>(model);
@@ -127,7 +104,32 @@ namespace RidePoint.Services
         }
         public async Task<List<User>> GetAllUsersAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+                .Where(user => !user.IsAdmin)
+                .ToListAsync();
+        }
+
+        public void SetUserSession(User user)
+        {
+            var session = _httpContextAccessor.HttpContext.Session;
+            session.SetInt32("UserId", user.UserId);
+            session.SetString("FirstName", user.FirstName);
+            session.SetString("UserRole", user.Role.ToString());
+            session.SetString("IsAdmin", user.IsAdmin ? "true" : "false");
+            session.SetString("BusinessType", user.BusinessType.ToString());
+
+            if (user.CompanyId.HasValue)
+            {
+                session.SetInt32("CompanyId", user.CompanyId.Value);
+            }
+        }
+
+        public void ClearUserSession()
+        {
+            var session = _httpContextAccessor.HttpContext.Session;
+            session.Clear();
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("UserId");
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("JwtToken");
         }
 
         public async Task<User> GetUserByEmailAsync(string email)
@@ -144,30 +146,43 @@ namespace RidePoint.Services
 
         public async Task<bool> EditUserAsync(int userId, EditUserViewModel model)
         {
-            var user = await _context.Users.FindAsync(userId);
-            if (user == null)
+            try
+            {
+
+                var user = await _context.Users.FindAsync(userId);
+                if (user == null)
+                {
+                    return false;
+                }
+
+                _mapper.Map(model, user);
+
+                if (!string.IsNullOrEmpty(model.Password))
+                {
+                    user.PasswordHash = HashPassword(model.Password);
+                }
+
+                if (model.Role.HasValue)
+                {
+                    user.Role = model.Role.Value;
+                }
+
+                if (model.BusinessType.HasValue)
+                {
+                    user.BusinessType = model.BusinessType.Value;
+                }
+
+                _context.Users.Update(user);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error updating user: {ex.Message}");
+
                 return false;
-
-            _mapper.Map(model, user);
-
-            if (!string.IsNullOrEmpty(model.Password))
-            {
-                user.PasswordHash = HashPassword(model.Password);
             }
-
-            if (model.Role.HasValue)
-            {
-                user.Role = model.Role.Value;
-            }
-
-            if (model.BusinessType.HasValue)
-            {
-                user.BusinessType = model.BusinessType.Value;
-            }
-
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
-            return true;
         }
 
         public async Task<bool> SoftDeleteUserAsync(int id)

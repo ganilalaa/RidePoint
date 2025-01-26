@@ -45,8 +45,20 @@ namespace RidePoint.Services
 
         public async Task<List<BusCompanyViewModel>> GetCompaniesAsync()
         {
-            var companies = await _context.BusCompanies.Include(c => c.Buses).ToListAsync();
-            return _mapper.Map<List<BusCompanyViewModel>>(companies);
+            try
+            {
+                var companies = await _context.BusCompanies
+                                              .Include(c => c.Buses)
+                                              .ToListAsync();
+
+                return _mapper.Map<List<BusCompanyViewModel>>(companies);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while fetching bus companies");
+
+                throw new ApplicationException("An error occurred while retrieving bus companies.", ex);
+            }
         }
 
         public async Task<bool> EditCompanyAsync(int id, BusCompanyViewModel model)
