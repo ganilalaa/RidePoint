@@ -20,17 +20,6 @@ a {
   border-color: #1861ac;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
@@ -45,6 +34,18 @@ button.accept-policy {
 }
 .card-body {
     padding: 2rem;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 .card-title {
@@ -103,20 +104,19 @@ section {
 html, body {
     height: 100%;
     margin: 0;
-    overflow: hidden; /* Prevent scrollbars */
+    overflow: hidden;
 }
 
 .full-height {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Full viewport height */
-    width: 100vw; /* Full viewport width */
+    height: 100vh;
+    width: 100vw;
 }
 
 main {
-    flex: 1; /* Allows main content to take the remaining space */
+    flex: 1;
     display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+    align-items: center; 
+    justify-content: center; 
 }
-
